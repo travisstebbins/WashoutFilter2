@@ -31,18 +31,24 @@ public class CameraController : MonoBehaviour
 
 	void Update () 
 	{
-		transform.rotation = Quaternion.Euler (new Vector3 (transform.eulerAngles.x - Input.gyro.rotationRateUnbiased.x, transform.eulerAngles.y -Input.gyro.rotationRateUnbiased.y, 0));
-        if (Mathf.Abs(transform.rotation.eulerAngles.y) > washoutThreshold && Mathf.Abs(transform.rotation.eulerAngles.y - prevYRotation) <= minDeltaRotation && !rotating)
+        transform.rotation = Quaternion.Euler(new Vector3((transform.eulerAngles.x - Input.gyro.rotationRateUnbiased.x) % 360, (transform.eulerAngles.y - Input.gyro.rotationRateUnbiased.y) % 360, 0));
+        float adjustedRotation = transform.rotation.eulerAngles.y > 180 ?transform.rotation.eulerAngles.y - 360 : transform.rotation.eulerAngles.y;
+        //Debug.Log("adjustedRotation: " + adjustedRotation);
+        if (Mathf.Abs(adjustedRotation) > washoutThreshold && Mathf.Abs(adjustedRotation - prevYRotation) <= minDeltaRotation && !rotating)
         {
             currentHoldTime += Time.deltaTime;
             if (currentHoldTime >= washoutDelay)
             {
                 StartCoroutine(washoutCoroutine());
+                //float targetRotation = (-90 - transform.rotation.eulerAngles.y - videoSphere.transform.rotation.eulerAngles.y) % 360;
+                //videoSphere.transform.rotation = Quaternion.Euler(new Vector3(0, targetRotation, 0));
+                //transform.rotation = Quaternion.identity;
+                //currentHoldTime = 0;
             }
         }
         else
         {
-            prevYRotation = transform.rotation.eulerAngles.y;
+            prevYRotation = adjustedRotation;
             currentHoldTime = 0;
         }
 	}
@@ -50,22 +56,30 @@ public class CameraController : MonoBehaviour
     IEnumerator washoutCoroutine()
     {
         rotating = true;
-        float targetRotation = (-transform.rotation.eulerAngles.y - videoSphere.transform.rotation.eulerAngles.y) % 360;
-        int direction = targetRotation >= 0 ? 1 : -1;
-        Debug.Log("pre-target rotation: " + targetRotation);
-        if (targetRotation < 0)
+        float targetRotationAmount = transform.rotation.eulerAngles.y > 180 ? 360 - transform.rotation.eulerAngles.y : -transform.rotation.eulerAngles.y;
+        //if (targetRotationAmount < 0)
+        //{
+        //    targetRotationAmount += 360;
+        //}
+        int direction = targetRotationAmount >= 0 ? 1 : -1;
+        float amountRotated = 0;
+        //Debug.Log("target rotation amount: " + targetRotationAmount);
+        while (Mathf.Abs(amountRotated) < Mathf.Abs(targetRotationAmount))
         {
-            targetRotation = 360 + targetRotation;
-        }
-        targetRotation += 90;
-        Debug.Log("post-target rotation: " + targetRotation);
-        float step = targetRotation * washoutSpeed;
-        while (Mathf.Abs(videoSphere.transform.rotation.eulerAngles.y - targetRotation) > 10f)
-        {
-            Debug.Log("rotation: " + videoSphere.transform.eulerAngles.y);
-            videoSphere.transform.Rotate(new Vector3(0, step * direction * Time.deltaTime, 0));
+            videoSphere.transform.Rotate(new Vector3(0, direction * washoutSpeed * Time.deltaTime, 0));
+            amountRotated += direction * washoutSpeed * Time.deltaTime;
+            //Debug.Log("amount rotated: " + amountRotated);
             yield return null;
         }
         rotating = false;
+
+        //rotating = true;
+        //int direction = transform.rotation.eulerAngles.y > 180 ? 1 : -1;
+        //while (transform.rotation.eulerAngles.y % 360 > 5)
+        //{
+        //    transform.Rotate(new Vector3(0, direction * Time.deltaTime * washoutSpeed, 0));
+        //    yield return null;
+        //}
+        //rotating = false;
     }
 }
