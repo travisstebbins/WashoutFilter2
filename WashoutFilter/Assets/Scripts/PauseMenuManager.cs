@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] VideoPlayer video;
-    [SerializeField] CameraController cameraController;
+    [SerializeField] WashoutFilter washoutFilter;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseBackground;
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem resumeButton;
@@ -56,10 +56,10 @@ public class PauseMenuManager : MonoBehaviour
 
     void Start()
     {
-        washoutDelayValue.text = cameraController.washoutDelay.ToString();
-        degreesPerSecondValue.text = cameraController.degreesPerSecond.ToString();
-        washoutThresholdValue.text = cameraController.washoutThreshold.ToString();
-        curveIndexValue.text = cameraController.curveIndex.ToString();
+        washoutDelayValue.text = washoutFilter.washoutDelay.ToString();
+        degreesPerSecondValue.text = washoutFilter.degreesPerSecond.ToString();
+        washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
+        curveIndexValue.text = washoutFilter.curveIndex.ToString();
     }
 
     public void TogglePause()
@@ -91,49 +91,49 @@ public class PauseMenuManager : MonoBehaviour
 
     public void DecrementWashoutDelay()
     {
-        cameraController.washoutDelay--;
-        washoutDelayValue.text = cameraController.washoutDelay.ToString();
+        washoutFilter.washoutDelay--;
+        washoutDelayValue.text = washoutFilter.washoutDelay.ToString();
     }
 
     public void IncrementWashoutDelay()
     {
-        cameraController.washoutDelay++;
-        washoutDelayValue.text = cameraController.washoutDelay.ToString();
+        washoutFilter.washoutDelay++;
+        washoutDelayValue.text = washoutFilter.washoutDelay.ToString();
     }
 
     public void DecrementDegreesPerSecond()
     {
-        cameraController.degreesPerSecond--;
-        degreesPerSecondValue.text = cameraController.degreesPerSecond.ToString();
+        washoutFilter.degreesPerSecond--;
+        degreesPerSecondValue.text = washoutFilter.degreesPerSecond.ToString();
     }
 
     public void IncrementDegreesPerSecond()
     {
-        cameraController.degreesPerSecond++;
-        degreesPerSecondValue.text = cameraController.degreesPerSecond.ToString();
+        washoutFilter.degreesPerSecond++;
+        degreesPerSecondValue.text = washoutFilter.degreesPerSecond.ToString();
     }
 
     public void DecrementWashoutThreshold()
     {
-        cameraController.washoutThreshold--;
-        washoutThresholdValue.text = cameraController.washoutThreshold.ToString();
+        washoutFilter.washoutThreshold--;
+        washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
     }
 
     public void IncrementWashoutThreshold()
     {
-        cameraController.washoutThreshold++;
-        washoutThresholdValue.text = cameraController.washoutThreshold.ToString();
+        washoutFilter.washoutThreshold++;
+        washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
     }
 
     public void DecrementCurveIndex()
     {
-        cameraController.curveIndex--;
-        curveIndexValue.text = cameraController.curveIndex.ToString();
+        washoutFilter.curveIndex--;
+        curveIndexValue.text = washoutFilter.curveIndex.ToString();
     }
 
     public void IncrementCurveIndex()
     {
-        cameraController.curveIndex++;
-        curveIndexValue.text = cameraController.curveIndex.ToString();
+        washoutFilter.curveIndex++;
+        curveIndexValue.text = washoutFilter.curveIndex.ToString();
     }
 }

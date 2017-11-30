@@ -945,6 +945,7 @@ GameObject:
   - component: {fileID: 470263132}
   - component: {fileID: 470263131}
   - component: {fileID: 470263135}
+  - component: {fileID: 470263137}
   - component: {fileID: 470263138}
   - component: {fileID: 470263136}
   m_Layer: 0
@@ -1027,11 +1028,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe1dbbd4339948ce81e96b29c8492f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &470263136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 470263130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c07645d736eba74186d2c38da4dfaeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DoubleClickTime: 0.3
+  m_SwipeWidth: 0.3
+--- !u!114 &470263137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 470263130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d10096f0f756c143b11ab339cde6643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   videoSphere: {fileID: 224951312}
   m_washoutDelay: 4
   m_degreesPerSecond: 30
   m_washoutThreshold: 35
-  minDeltaRotation: 15
+  minDeltaRotation: 20
   m_curveIndex: 0
   curves:
   - serializedVersion: 2
@@ -1068,19 +1093,40 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &470263136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 470263130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c07645d736eba74186d2c38da4dfaeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DoubleClickTime: 0.3
-  m_SwipeWidth: 0.3
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &470263138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,7 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   video: {fileID: 224951313}
-  cameraController: {fileID: 470263135}
+  washoutFilter: {fileID: 470263137}
   pauseMenu: {fileID: 615239633}
   pauseBackground: {fileID: 721007221}
   resumeButton: {fileID: 1491363178}
