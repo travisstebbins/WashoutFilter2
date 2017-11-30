@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem curveIndexMinusButton;
     [SerializeField] Text curveIndexValue;
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem curveIndexPlusButton;
+    [SerializeField] VRStandardAssets.Utils.VRInteractiveItem quitButton;
     bool paused = false;
 
     void OnEnable()
@@ -39,6 +41,7 @@ public class PauseMenuManager : MonoBehaviour
         washoutThresholdPlusButton.OnClick += IncrementWashoutThreshold;
         curveIndexMinusButton.OnClick += DecrementCurveIndex;
         curveIndexPlusButton.OnClick += IncrementCurveIndex;
+        quitButton.OnClick += Quit;
 }
 
     void OnDisable()
@@ -53,6 +56,7 @@ public class PauseMenuManager : MonoBehaviour
         washoutThresholdPlusButton.OnClick -= IncrementWashoutThreshold;
         curveIndexMinusButton.OnClick -= DecrementCurveIndex;
         curveIndexPlusButton.OnClick -= IncrementCurveIndex;
+        quitButton.OnClick -= Quit;
     }
 
     void Start()
@@ -140,5 +144,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         washoutFilter.curveIndex++;
         curveIndexValue.text = washoutFilter.curveIndex.ToString();
+    }
+
+    public void Quit()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
