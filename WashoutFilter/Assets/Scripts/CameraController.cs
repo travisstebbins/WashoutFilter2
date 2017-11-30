@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 public class CameraController : MonoBehaviour
 {
     // SERIALIZE FIELD VARIABLES
@@ -26,7 +27,7 @@ public class CameraController : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Phone doesen't support");
+			Debug.Log("Phone doesen't support gyro controls");
 		}
 	}
 
@@ -51,24 +52,18 @@ public class CameraController : MonoBehaviour
 
     IEnumerator washoutCoroutine()
     {
-        Debug.Log("starting washout coroutine");
         rotating = true;
         float startingRotation = videoSphere.transform.eulerAngles.y;
         float targetRotationAmount = transform.rotation.eulerAngles.y > 180 ? 360 - transform.rotation.eulerAngles.y : -transform.rotation.eulerAngles.y;
         int direction = targetRotationAmount >= 0 ? 1 : -1;
-        float amountRotated = 0;
         float totalTime = (1.0f / degreesPerSecond) * Mathf.Abs(targetRotationAmount);
         float startTime = Time.time;
         while (Time.time < startTime + totalTime)
         {
             float rotationProportion = curve.Evaluate((Time.time - startTime) / totalTime);
             videoSphere.transform.rotation = Quaternion.Euler(new Vector3(videoSphere.transform.eulerAngles.x, startingRotation + rotationProportion * targetRotationAmount, videoSphere.transform.eulerAngles.z));
-            //float step = direction * speedMultiplier * Time.deltaTime;
-            //videoSphere.transform.Rotate(new Vector3(0, step, 0));
-            //amountRotated += step;
             yield return null;
         }
         rotating = false;
-        Debug.Log("finishing washout coroutine");
     }
 }
