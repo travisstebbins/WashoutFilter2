@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] List<VideoClip> m_videos;
-    public int videoIndex = 0;
+    int m_videoIndex = 0;
 
     // INSTANCE
     static GameManager m_instance;
@@ -40,6 +40,18 @@ public class GameManager : MonoBehaviour
         get
         {
             return m_videos[videoIndex];
+        }
+    }
+
+    public int videoIndex
+    {
+        get
+        {
+            return m_videoIndex;
+        }
+        set
+        {
+            m_videoIndex = Mathf.Min(m_videos.Count - 1, Mathf.Max(0, value));
         }
     }
 }
