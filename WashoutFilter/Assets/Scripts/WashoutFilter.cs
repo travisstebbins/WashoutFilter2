@@ -72,6 +72,14 @@ public class WashoutFilter : MonoBehaviour
     {
         currentHoldTime = 0;
         curveIndex = 0;
+        if (GameManager.instance.washoutFilterEnabled)
+        {
+            enabled = true;
+        }
+        else
+        {
+            enabled = false;
+        }
     }
 
     void Update()

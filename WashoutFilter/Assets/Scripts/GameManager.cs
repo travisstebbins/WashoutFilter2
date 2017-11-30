@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] List<VideoClip> m_videos;
     int m_videoIndex = 0;
+    public bool washoutFilterEnabled = true;
 
     // INSTANCE
     static GameManager m_instance;
