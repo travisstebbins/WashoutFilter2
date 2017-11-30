@@ -94,7 +94,7 @@ namespace VRStandardAssets.Utils
 
             // Deactive the last interactive item 
             if (interactible != m_LastInteractible)
-                DeactiveLastInteractible();
+                //DeactiveLastInteractible();
 
             m_LastInteractible = interactible;
 
