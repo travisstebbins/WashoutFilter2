@@ -35,7 +35,6 @@ namespace VRStandardAssets.Utils
             // Store the original scale and rotation.
             m_OriginalScale = m_ReticleTransform.localScale;
             m_OriginalRotation = m_ReticleTransform.localRotation;
-            Hide();
         }
 
 

@@ -57,10 +57,12 @@ public class PauseMenuManager : MonoBehaviour
 
     void Start()
     {
+        video.clip = GameManager.instance.currentVideo;
         washoutDelayValue.text = washoutFilter.washoutDelay.ToString();
         degreesPerSecondValue.text = washoutFilter.degreesPerSecond.ToString();
         washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
         curveIndexValue.text = washoutFilter.curveIndex.ToString();
+        reticle.Hide();
     }
 
     public void TogglePause()
