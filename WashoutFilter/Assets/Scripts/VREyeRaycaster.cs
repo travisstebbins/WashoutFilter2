@@ -76,6 +76,10 @@ namespace VRStandardAssets.Utils
             {
                 interactible = hit.collider.GetComponent<VRInteractiveItem>(); //attempt to get the VRInteractiveItem on the hit object
                 m_CurrentInteractible = interactible;
+
+                // Something was hit, set at the hit position.
+                if (m_Reticle)
+                    m_Reticle.SetPosition(hit);
             }
             else
             {
@@ -97,10 +101,6 @@ namespace VRStandardAssets.Utils
                 //DeactiveLastInteractible();
 
             m_LastInteractible = interactible;
-
-            // Something was hit, set at the hit position.
-            if (m_Reticle)
-                m_Reticle.SetPosition(hit);
 
             if (OnRaycasthit != null)
                 OnRaycasthit(hit);

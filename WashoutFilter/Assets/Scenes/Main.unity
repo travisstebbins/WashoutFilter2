@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245dddee3cbab9642945f8ce3d08d6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DefaultDistance: 10
-  m_UseNormal: 1
+  m_DefaultDistance: 5
+  m_UseNormal: 0
   m_Image: {fileID: 24190365}
   m_ReticleTransform: {fileID: 24190364}
   m_Camera: {fileID: 470263134}
@@ -1674,6 +1674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   video: {fileID: 224951313}
   washoutFilter: {fileID: 470263137}
+  reticle: {fileID: 24190367}
   pauseMenu: {fileID: 615239633}
   pauseBackground: {fileID: 721007221}
   resumeButton: {fileID: 1491363178}

@@ -9,6 +9,7 @@ public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] VideoPlayer video;
     [SerializeField] WashoutFilter washoutFilter;
+    [SerializeField] VRStandardAssets.Utils.Reticle reticle;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseBackground;
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem resumeButton;
@@ -69,6 +70,7 @@ public class PauseMenuManager : MonoBehaviour
             video.Pause();
             pauseBackground.SetActive(true);
             pauseMenu.SetActive(true);
+            reticle.Show();
             paused = true;
         }
         else
@@ -76,16 +78,17 @@ public class PauseMenuManager : MonoBehaviour
             video.Play();
             pauseBackground.SetActive(false);
             pauseMenu.SetActive(false);
+            reticle.Hide();
             paused = false;
         }
     }
 
     public void Resume()
     {
-        Debug.Log("Resume");
         video.Play();
         pauseBackground.SetActive(false);
         pauseMenu.SetActive(false);
+        reticle.Hide();
         paused = false;
     }
 

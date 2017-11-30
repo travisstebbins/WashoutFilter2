@@ -35,6 +35,7 @@ namespace VRStandardAssets.Utils
             // Store the original scale and rotation.
             m_OriginalScale = m_ReticleTransform.localScale;
             m_OriginalRotation = m_ReticleTransform.localRotation;
+            Hide();
         }
 
 
@@ -67,7 +68,7 @@ namespace VRStandardAssets.Utils
         // This overload of SetPosition is used when the VREyeRaycaster has hit something.
         public void SetPosition (RaycastHit hit)
         {
-            m_ReticleTransform.position = hit.point - hit.normal;
+            m_ReticleTransform.position = hit.point;
             m_ReticleTransform.localScale = m_OriginalScale * hit.distance;
             
             // If the reticle should use the normal of what has been hit...
