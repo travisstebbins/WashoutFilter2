@@ -10,6 +10,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem rainOrShineButton;
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem specialDeliveryButton;
     [SerializeField] VRStandardAssets.Utils.VRInteractiveItem buggyNightButton;
+    [SerializeField] VRStandardAssets.Utils.VRInteractiveItem preset1Button;
+    [SerializeField] VRStandardAssets.Utils.VRInteractiveItem preset2Button;
+    [SerializeField] VRStandardAssets.Utils.VRInteractiveItem preset3Button;
+    [SerializeField] VRStandardAssets.Utils.VRInteractiveItem playButton;
 
     void OnEnable()
     {
@@ -17,6 +21,10 @@ public class MainMenuManager : MonoBehaviour
         rainOrShineButton.OnClick += rainOrShine;
         specialDeliveryButton.OnClick += specialDelivery;
         buggyNightButton.OnClick += buggyNight;
+        preset1Button.OnClick += preset1;
+        preset2Button.OnClick += preset2;
+        preset3Button.OnClick += preset3;
+        playButton.OnClick += play;
     }
 
     void OnDisable()
@@ -25,6 +33,10 @@ public class MainMenuManager : MonoBehaviour
         rainOrShineButton.OnClick -= rainOrShine;
         specialDeliveryButton.OnClick -= specialDelivery;
         buggyNightButton.OnClick -= buggyNight;
+        preset1Button.OnClick -= preset1;
+        preset2Button.OnClick -= preset2;
+        preset3Button.OnClick -= preset3;
+        playButton.OnClick -= play;
     }
 
     void Start()
@@ -39,24 +51,42 @@ public class MainMenuManager : MonoBehaviour
             toggleWashoutFilterButton.GetComponentInChildren<Text>().text = "Washout Filter Disabled";
             toggleWashoutFilterButton.GetComponent<Image>().color = Color.gray;
         }
-    }
-
-    public void rainOrShine()
-    {
-        GameManager.instance.videoIndex = 0;
-        SceneManager.LoadScene("Main");
-    }
-
-    public void specialDelivery()
-    {
-        GameManager.instance.videoIndex = 1;
-        SceneManager.LoadScene("Main");
-    }
-
-    public void buggyNight()
-    {
-        GameManager.instance.videoIndex = 2;
-        SceneManager.LoadScene("Main");
+        switch(GameManager.instance.videoIndex)
+        {
+            case 0:
+                rainOrShineButton.GetComponent<Image>().color = Color.white;
+                specialDeliveryButton.GetComponent<Image>().color = Color.gray;
+                buggyNightButton.GetComponent<Image>().color = Color.gray;
+                break;
+            case 1:
+                rainOrShineButton.GetComponent<Image>().color = Color.gray;
+                specialDeliveryButton.GetComponent<Image>().color = Color.white;
+                buggyNightButton.GetComponent<Image>().color = Color.gray;
+                break;
+            case 2:
+                rainOrShineButton.GetComponent<Image>().color = Color.gray;
+                specialDeliveryButton.GetComponent<Image>().color = Color.gray;
+                buggyNightButton.GetComponent<Image>().color = Color.white;
+                break;
+        }
+        switch(GameManager.instance.preset)
+        {
+            case 1:
+                preset1Button.GetComponent<Image>().color = Color.white;
+                preset2Button.GetComponent<Image>().color = Color.gray;
+                preset3Button.GetComponent<Image>().color = Color.gray;
+                break;
+            case 2:
+                preset1Button.GetComponent<Image>().color = Color.gray;
+                preset2Button.GetComponent<Image>().color = Color.white;
+                preset3Button.GetComponent<Image>().color = Color.gray;
+                break;
+            case 3:
+                preset1Button.GetComponent<Image>().color = Color.gray;
+                preset2Button.GetComponent<Image>().color = Color.gray;
+                preset3Button.GetComponent<Image>().color = Color.white;
+                break;
+        }
     }
 
     public void toggleWashoutFilter()
@@ -73,5 +103,58 @@ public class MainMenuManager : MonoBehaviour
             toggleWashoutFilterButton.GetComponentInChildren<Text>().text = "Washout Filter Enabled";
             toggleWashoutFilterButton.GetComponent<Image>().color = Color.white;
         }
+    }
+
+    public void rainOrShine()
+    {
+        GameManager.instance.videoIndex = 0;
+        rainOrShineButton.GetComponent<Image>().color = Color.white;
+        specialDeliveryButton.GetComponent<Image>().color = Color.gray;
+        buggyNightButton.GetComponent<Image>().color = Color.gray;
+    }
+
+    public void specialDelivery()
+    {
+        GameManager.instance.videoIndex = 1;
+        rainOrShineButton.GetComponent<Image>().color = Color.gray;
+        specialDeliveryButton.GetComponent<Image>().color = Color.white;
+        buggyNightButton.GetComponent<Image>().color = Color.gray;
+    }
+
+    public void buggyNight()
+    {
+        GameManager.instance.videoIndex = 2;
+        rainOrShineButton.GetComponent<Image>().color = Color.gray;
+        specialDeliveryButton.GetComponent<Image>().color = Color.gray;
+        buggyNightButton.GetComponent<Image>().color = Color.white;
+    }
+
+    public void preset1()
+    {
+        GameManager.instance.preset = 1;
+        preset1Button.GetComponent<Image>().color = Color.white;
+        preset2Button.GetComponent<Image>().color = Color.gray;
+        preset3Button.GetComponent<Image>().color = Color.gray;
+    }
+
+    public void preset2()
+    {
+        GameManager.instance.preset = 2;
+        preset1Button.GetComponent<Image>().color = Color.gray;
+        preset2Button.GetComponent<Image>().color = Color.white;
+        preset3Button.GetComponent<Image>().color = Color.gray;
+    }
+
+    public void preset3()
+    {
+        GameManager.instance.preset = 3;
+        preset1Button.GetComponent<Image>().color = Color.gray;
+        preset2Button.GetComponent<Image>().color = Color.gray;
+        preset3Button.GetComponent<Image>().color = Color.white;
+    }
+
+    public void play()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
