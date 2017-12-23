@@ -105,7 +105,6 @@ public class WashoutFilter : MonoBehaviour
         rotating = true;
         float startingRotation = videoSphere.transform.eulerAngles.y;
         float targetRotationAmount = transform.rotation.eulerAngles.y > 180 ? 360 - transform.rotation.eulerAngles.y : -transform.rotation.eulerAngles.y;
-        int direction = targetRotationAmount >= 0 ? 1 : -1;
         float totalTime = (1.0f / m_degreesPerSecond) * Mathf.Abs(targetRotationAmount);
         float startTime = Time.time;
         while (Time.time < startTime + totalTime)
