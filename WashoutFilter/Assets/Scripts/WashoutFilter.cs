@@ -17,6 +17,7 @@ public class WashoutFilter : MonoBehaviour
     float prevYRotation;
     float currentHoldTime;
     bool rotating;
+    Coroutine rotationCoroutine;
 
     // PROPERTIES
     public float washoutDelay
@@ -88,19 +89,27 @@ public class WashoutFilter : MonoBehaviour
     void Update()
     {
         float adjustedRotation = transform.rotation.eulerAngles.y > 180 ? transform.rotation.eulerAngles.y - 360 : transform.rotation.eulerAngles.y;
+        //Debug.Log(Mathf.Abs(adjustedRotation - prevYRotation));
         if (Mathf.Abs(adjustedRotation) > m_washoutThreshold && Mathf.Abs(adjustedRotation - prevYRotation) <= minDeltaRotation && !rotating)
         {
             currentHoldTime += Time.deltaTime;
             if (currentHoldTime >= m_washoutDelay)
             {
-                StartCoroutine(washoutCoroutine());
+                rotationCoroutine = StartCoroutine(washoutCoroutine());
             }
+        }
+        else if (Mathf.Abs(adjustedRotation - prevYRotation) > minDeltaRotation && rotating)
+        {
+            StopCoroutine(rotationCoroutine);
+            rotating = false;
+            currentHoldTime = 0;
+            Debug.Log("override");
         }
         else
         {
-            prevYRotation = adjustedRotation;
             currentHoldTime = 0;
         }
+        prevYRotation = adjustedRotation;
     }
 
     IEnumerator washoutCoroutine()
