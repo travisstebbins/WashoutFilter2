@@ -1057,9 +1057,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoSphere: {fileID: 224951312}
   m_washoutDelay: 4
-  m_degreesPerSecond: 30
+  m_degreesPerSecond: 25
   m_washoutThreshold: 35
-  minDeltaRotation: 0.5
+  minDeltaRotation: 1
   m_curveIndex: 0
   curves:
   - serializedVersion: 2
