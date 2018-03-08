@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 28cf0f87640a33848ab87c999854d54b
-timeCreated: 1512055984
+guid: ccc92550c9c7eeb4cbd3fc2f7ec8473a
+timeCreated: 1520468072
 licenseType: Free
 VideoClipImporter:
   externalObjects: {}
@@ -15,16 +15,16 @@ VideoClipImporter:
   deinterlace: 0
   encodeAlpha: 0
   flipVertical: 0
-  flipHorizontal: 1
+  flipHorizontal: 0
   importAudio: 1
   targetSettings:
     0:
-      enableTranscoding: 1
+      enableTranscoding: 0
       codec: 0
       resizeFormat: 0
       aspectRatio: 0
-      customWidth: 1920
-      customHeight: 1080
+      customWidth: 3840
+      customHeight: 2048
       bitrateMode: 2
       spatialQuality: 2
   userData: 
