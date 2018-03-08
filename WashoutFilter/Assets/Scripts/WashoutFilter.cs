@@ -10,8 +10,7 @@ public class WashoutFilter : MonoBehaviour
     [SerializeField] float m_degreesPerSecond;
     [SerializeField] float m_washoutThreshold;
     [SerializeField] float minDeltaRotation;
-    [SerializeField] int m_curveIndex;
-    [SerializeField] List<AnimationCurve> curves;
+    [SerializeField] AnimationCurve curve;
 
     // CLASS VARIABLES
     float prevYRotation;
@@ -56,18 +55,6 @@ public class WashoutFilter : MonoBehaviour
         }
     }
 
-    public int curveIndex
-    {
-        get
-        {
-            return m_curveIndex;
-        }
-        set
-        {
-            m_curveIndex = Mathf.Min(curves.Count - 1, Mathf.Max(0, value));
-        }
-    }
-
     // UNITY FUNCTIONS
     void Start()
     {
@@ -83,7 +70,6 @@ public class WashoutFilter : MonoBehaviour
         washoutDelay = GameManager.instance.washoutDelay;
         degreesPerSecond = GameManager.instance.degreesPerSecond;
         washoutThreshold = GameManager.instance.washoutThreshold;
-        curveIndex = GameManager.instance.curveIndex;
     }
 
     void Update()
@@ -121,8 +107,8 @@ public class WashoutFilter : MonoBehaviour
         float startTime = Time.time;
         while (Time.time < startTime + totalTime)
         {
-            float rotationProportion = curves[curveIndex].Evaluate((Time.time - startTime) / totalTime);
-            videoSphere.transform.rotation = Quaternion.Euler(new Vector3(videoSphere.transform.eulerAngles.x, startingRotation + rotationProportion * targetRotationAmount, videoSphere.transform.eulerAngles.z));
+            float rotationProportion = curve.Evaluate((Time.time - startTime) / totalTime);
+            videoSphere.transform.rotation = Quaternion.Euler(new Vector3(videoSphere.transform.eulerAngles.x, startingRotation - rotationProportion * targetRotationAmount, videoSphere.transform.eulerAngles.z));
             yield return null;
         }
         rotating = false;

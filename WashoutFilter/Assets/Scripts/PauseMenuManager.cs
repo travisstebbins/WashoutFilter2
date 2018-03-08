@@ -39,8 +39,6 @@ public class PauseMenuManager : MonoBehaviour
         degreesPerSecondPlusButton.OnClick += IncrementDegreesPerSecond;
         washoutThresholdMinusButton.OnClick += DecrementWashoutThreshold;
         washoutThresholdPlusButton.OnClick += IncrementWashoutThreshold;
-        curveIndexMinusButton.OnClick += DecrementCurveIndex;
-        curveIndexPlusButton.OnClick += IncrementCurveIndex;
         quitButton.OnClick += Quit;
 }
 
@@ -54,8 +52,6 @@ public class PauseMenuManager : MonoBehaviour
         degreesPerSecondPlusButton.OnClick -= IncrementDegreesPerSecond;
         washoutThresholdMinusButton.OnClick -= DecrementWashoutThreshold;
         washoutThresholdPlusButton.OnClick -= IncrementWashoutThreshold;
-        curveIndexMinusButton.OnClick -= DecrementCurveIndex;
-        curveIndexPlusButton.OnClick -= IncrementCurveIndex;
         quitButton.OnClick -= Quit;
     }
 
@@ -65,7 +61,6 @@ public class PauseMenuManager : MonoBehaviour
         washoutDelayValue.text = washoutFilter.washoutDelay.ToString();
         degreesPerSecondValue.text = washoutFilter.degreesPerSecond.ToString();
         washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
-        curveIndexValue.text = washoutFilter.curveIndex.ToString();
         reticle.Hide();
     }
 
@@ -132,18 +127,6 @@ public class PauseMenuManager : MonoBehaviour
     {
         washoutFilter.washoutThreshold++;
         washoutThresholdValue.text = washoutFilter.washoutThreshold.ToString();
-    }
-
-    public void DecrementCurveIndex()
-    {
-        washoutFilter.curveIndex--;
-        curveIndexValue.text = washoutFilter.curveIndex.ToString();
-    }
-
-    public void IncrementCurveIndex()
-    {
-        washoutFilter.curveIndex++;
-        curveIndexValue.text = washoutFilter.curveIndex.ToString();
     }
 
     public void Quit()
