@@ -69,7 +69,7 @@ public class MainMenuManager : MonoBehaviour
                 buggyNightButton.GetComponent<Image>().color = Color.white;
                 break;
         }
-        switch(GameManager.instance.preset)
+		switch(GameManager.instance.speedPreset)
         {
             case 1:
                 preset1Button.GetComponent<Image>().color = Color.white;
@@ -131,7 +131,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void preset1()
     {
-        GameManager.instance.preset = 1;
+		GameManager.instance.speedPreset = 1;
         preset1Button.GetComponent<Image>().color = Color.white;
         preset2Button.GetComponent<Image>().color = Color.gray;
         preset3Button.GetComponent<Image>().color = Color.gray;
@@ -139,7 +139,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void preset2()
     {
-        GameManager.instance.preset = 2;
+		GameManager.instance.speedPreset = 2;
         preset1Button.GetComponent<Image>().color = Color.gray;
         preset2Button.GetComponent<Image>().color = Color.white;
         preset3Button.GetComponent<Image>().color = Color.gray;
@@ -147,7 +147,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void preset3()
     {
-        GameManager.instance.preset = 3;
+		GameManager.instance.speedPreset = 3;
         preset1Button.GetComponent<Image>().color = Color.gray;
         preset2Button.GetComponent<Image>().color = Color.gray;
         preset3Button.GetComponent<Image>().color = Color.white;

@@ -108,7 +108,7 @@ public class WashoutFilter : MonoBehaviour
         while (Time.time < startTime + totalTime)
         {
             float rotationProportion = curve.Evaluate((Time.time - startTime) / totalTime);
-            videoSphere.transform.rotation = Quaternion.Euler(new Vector3(videoSphere.transform.eulerAngles.x, startingRotation - rotationProportion * targetRotationAmount, videoSphere.transform.eulerAngles.z));
+            videoSphere.transform.rotation = Quaternion.Euler(new Vector3(videoSphere.transform.eulerAngles.x, startingRotation + rotationProportion * targetRotationAmount, videoSphere.transform.eulerAngles.z));
             yield return null;
         }
         rotating = false;

@@ -900,7 +900,8 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 854edb1201caa924485b342ec50b65d1, type: 3}
   - {fileID: 32900000, guid: 37d546d112e578d42b95e9d3e4e2660f, type: 3}
   videoIndex: 0
-  preset: 1
+  speedPreset: 1
+  dATPreset: 1
   washoutFilterEnabled: 1
 --- !u!4 &378164541
 Transform:

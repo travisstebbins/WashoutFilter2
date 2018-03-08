@@ -8,51 +8,49 @@ public class GameManager : MonoBehaviour
 {
     // SERIALIZEFIELD VARIABLES
     public List<VideoClip> m_videos;
+	[Range(0,2)]
 	public int videoIndex;
-	public int preset;
+	[Range(1,2)]
+	public int speedPreset;
+	[Range(1,2)]
+	public int dATPreset;
 	public bool washoutFilterEnabled;
 
     // PROPERTIES
-    public float washoutDelay
+    public float degreesPerSecond
 	{
 		get
 		{
-			switch (preset)
+			switch (speedPreset)
 			{
 				case 1:
-					return 1.5f;
+					return 4;
 					break;
 				case 2:
-					return 5;
-					break;
-				case 3:
-					return 3;
+					return 20;
 					break;
 				default:
-					return 1.5f;
+					return 4;
 					break;
 			}
 		}
 	}
 
-    public float degreesPerSecond
+	public float washoutDelay
 	{
 		get
 		{
-			switch (preset)
+			switch (dATPreset)
 			{
-				case 1:
-					return 5;
-					break;
-				case 2:
-					return 40;
-					break;
-				case 3:
-					return 20;
-					break;
-				default:
-					return 5;
-					break;
+			case 1:
+				return 1.5f;
+				break;
+			case 2:
+				return 4;
+				break;
+			default:
+				return 1.5f;
+				break;
 			}
 		}
 	}
@@ -61,16 +59,13 @@ public class GameManager : MonoBehaviour
 	{
 		get
 		{
-			switch (preset)
+			switch (dATPreset)
 			{
 				case 1:
 					return 45;
 					break;
 				case 2:
-					return 30;
-					break;
-				case 3:
-					return 37;
+					return 25;
 					break;
 				default:
 					return 45;
