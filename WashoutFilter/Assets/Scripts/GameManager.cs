@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 {
     // SERIALIZEFIELD VARIABLES
     public List<VideoClip> m_videos;
-	[Range(0,2)]
+	[Range(0,2), Tooltip("0 = Rain or Shine, 1 = Special Delivery, 2 = Buggy Night")]
 	public int videoIndex;
-	[Range(1,2)]
+	[Range(1,2), Tooltip("1 = slow, 2 = fast")]
 	public int speedPreset;
-	[Range(1,2)]
+	[Range(1,2), Tooltip("1 = short delay large angle, 2 = long delay small angle")]
 	public int dATPreset;
 	public bool washoutFilterEnabled;
 
@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
 			switch (speedPreset)
 			{
 				case 1:
-					return 4;
+					return 3;
 					break;
 				case 2:
-					return 20;
+					return 13;
 					break;
 				default:
-					return 4;
+					return 3;
 					break;
 			}
 		}
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 			switch (dATPreset)
 			{
 			case 1:
-				return 1.5f;
+				return 2;
 				break;
 			case 2:
 				return 4;
