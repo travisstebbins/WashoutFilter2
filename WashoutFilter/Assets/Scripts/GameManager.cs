@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 	[Range(1,2), Tooltip("1 = short delay large angle, 2 = long delay small angle")]
 	public int dATPreset;
 	public bool washoutFilterEnabled;
+	public int participantID;
+	public int sessionID;
 
     // PROPERTIES
     public float degreesPerSecond
