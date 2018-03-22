@@ -41,7 +41,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.instance.washoutFilterEnabled)
+		if (GameManager.instance.speedPreset == 3)
         {
             toggleWashoutFilterButton.GetComponentInChildren<Text>().text = "Washout Filter Enabled";
             toggleWashoutFilterButton.GetComponent<Image>().color = Color.white;
@@ -91,15 +91,15 @@ public class MainMenuManager : MonoBehaviour
 
     public void toggleWashoutFilter()
     {
-        if (GameManager.instance.washoutFilterEnabled)
+		if (GameManager.instance.speedPreset == 3)
         {
-            GameManager.instance.washoutFilterEnabled = false;
+			GameManager.instance.speedPreset = 1;
             toggleWashoutFilterButton.GetComponentInChildren<Text>().text = "Washout Filter Disabled";
             toggleWashoutFilterButton.GetComponent<Image>().color = Color.gray;
         }
         else
         {
-            GameManager.instance.washoutFilterEnabled = true;
+			GameManager.instance.speedPreset = 3;
             toggleWashoutFilterButton.GetComponentInChildren<Text>().text = "Washout Filter Enabled";
             toggleWashoutFilterButton.GetComponent<Image>().color = Color.white;
         }

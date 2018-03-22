@@ -59,13 +59,13 @@ public class WashoutFilter : MonoBehaviour
     void Start()
     {
         currentHoldTime = 0;
-        if (GameManager.instance.washoutFilterEnabled)
+		if (GameManager.instance.speedPreset == 3)
         {
-            enabled = true;
+            enabled = false;
         }
         else
         {
-            enabled = false;
+            enabled = true;
         }
         washoutDelay = GameManager.instance.washoutDelay;
         degreesPerSecond = GameManager.instance.degreesPerSecond;
