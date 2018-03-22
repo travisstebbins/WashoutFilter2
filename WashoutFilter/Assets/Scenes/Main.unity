@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.38073993, b: 0.358727, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -901,12 +901,11 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 0f32a0f30310348e2898794296529490, type: 3}
   - {fileID: 32900000, guid: 1c8f09056fa34f54780b144b2c3817ef, type: 3}
   - {fileID: 32900000, guid: 9b6b698bd17044a439d89c4121720d0b, type: 3}
-  videoIndex: 0
-  speedPreset: 1
+  videoIndex: 1
+  speedPreset: 3
   dATPreset: 1
-  washoutFilterEnabled: 1
-  participantID: 0
-  sessionID: 0
+  participantID: 2
+  sessionID: 3
 --- !u!4 &378164541
 Transform:
   m_ObjectHideFlags: 0
