@@ -901,10 +901,10 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 0f32a0f30310348e2898794296529490, type: 3}
   - {fileID: 32900000, guid: 1c8f09056fa34f54780b144b2c3817ef, type: 3}
   - {fileID: 32900000, guid: 9b6b698bd17044a439d89c4121720d0b, type: 3}
-  videoIndex: 1
-  speedPreset: 1
+  videoIndex: 3
+  speedPreset: 2
   dATPreset: 1
-  participantID: 5
+  participantID: 7
   sessionID: 3
 --- !u!4 &378164541
 Transform:
